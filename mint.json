@@ -1,15 +1,15 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Documentation Starter Kit",
+  "name": "Svelvet",
   "logo": {
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0069ED",
-    "light": "#4D9CFF",
-    "dark": "#0050B4"
+    "primary": "#E94646",
+    "light": "#E94646",
+    "dark": "#E94646"
   },
   "topbarLinks": [
     {
@@ -23,11 +23,6 @@
   },
   "anchors": [
     {
-      "name": "API Reference",
-      "icon": "rectangle-terminal",
-      "url": "api-reference"
-    },
-    {
       "name": "Changelog",
       "icon": "list",
       "url": "https://mintlify.com"
@@ -35,17 +30,30 @@
   ],
   "navigation": [
     {
-      "group": "Home",
-      "pages": ["introduction", "features"]
+      "group": "Overview",
+      "pages": ["introduction", "Getting Started"]
     },
     {
       "group": "Components",
-      "pages": ["components/node", "components/minimap"]
+      "pages": [
+        "components/svelvet",
+        "components/node",
+        "components/anchor",
+        "components/edge",
+        "components/group",
+        "components/minimap",
+        "components/controls",
+        "components/resizer"
+      ]
+    },
+    {
+      "group": "Functions",
+      "pages": ["functions/Generate Inputs", "functions/Generate Output"]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "twitter": "https://twitter.com/SvelvetOSLabs",
+    "github": "https://github.com/open-source-labs/Svelvet/",
+    "linkedin": "https://www.linkedin.com/company/svelvet"
   }
 }
