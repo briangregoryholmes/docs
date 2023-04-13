@@ -1,0 +1,60 @@
+---
+title: 'Edge'
+sidebarTitle: 'Edge'
+description: 'Optional component for customizing Edges and labels'
+---
+
+## Description
+
+Paths can be customized for your Edges by placing the exposed "path" property on an HTML Path Element. You can also pass a custom label.
+
+Custom Edges are then passed to the "edge" prop of an Anchor component. Any Edge initiated from that Anchor will render out your custom path and label.
+
+<Warning>When passing a custom label, you must specify slot="label"</Warning>
+
+<CodeGroup>
+```jsx MyEdge.svelte
+<script>
+	import { Edge } from 'svelvet';
+</script>
+
+<Edge>
+  <path d={path} />
+  <button slot="label">
+    <p>Custom Edge</p>
+  </button>
+</Edge>
+
+<style>
+	path {
+		stroke: rgb(246, 231, 20);
+		stroke-width: 4px;
+	}
+</style>
+
+````
+
+
+```jsx MyNode.svelte
+<script>
+	import { Svelvet, Node } from 'svelvet';
+    import { MyEdge } from './MyEdge.svelte
+</script>
+
+<Svelvet>
+    <Node>
+        <div class="my-node">
+            <Anchor edge={MyEdge}/>
+        </div>
+    </Node>
+</Svelvet>
+````
+
+</CodeGroup>
+
+## Properties
+
+<ResponseField name="path" type="string">
+  The SVG path string used for rendering the edge. Pass to the "d" parameter on
+  your custom path component
+</ResponseField>

@@ -1,20 +1,21 @@
 ---
 title: 'Controls'
 sidebarTitle: 'Controls'
-description: 'Configrable controls component. Configurable via props or by passing your own custom buttons as children'
+description: 'Optional component offering zoom, reset, lock and unhide functionality. Configurable via props or by passing your own custom buttons as children'
 ---
 
 ## Description
 
-```HTML
+```jsx MyControls.svelte
 <script>
-	import { Controls } from '$lib';
+	import { Controls } from 'svelvet';
 </script>
 
 <Controls let:zoomIn let:zoomOut let:reset let:unhideAll corner="SW">
 	<button class="my-zoom-in" on:click|stopPropagation={zoomIn}/>
 	<button on:click|stopPropagation={zoomOut}/>
-    <button on:click|stopPropagation={zoomOut}/>
+    <button on:click|stopPropagation={reset}/>
+    <button on:click|stopPropagation={unhideAll}/>
 </Controls>
 
 <style>
@@ -25,4 +26,43 @@ description: 'Configrable controls component. Configurable via props or by passi
 </style>
 ```
 
+<Warning>
+  When passing the component to Svelvet, you must specify slot="controls"
+</Warning>
+
+```jsx MyControls.svelte
+<script>
+	import { Svelvet, Node} from 'svelvet';
+</script>
+
+<Svelvet>
+    <Node/>
+    <MyControls slot="controls"/>
+</Svelvet>
+```
+
 ## Props
+
+<ResponseField name="increment" type="number" default="0.1">
+  Controls strength of zoom. Default of 0.1 means each button click zooms the
+  graph by 10% in or out.
+</ResponseField>
+
+## Functions
+
+<ResponseField name="let:zoomIn" type="function">
+  Used to trigger a zoom in on the graph element
+</ResponseField>
+
+<ResponseField name="let:zoomOut" type="function">
+  Used to trigger a zoom out on the graph element
+</ResponseField>
+
+<ResponseField name="let:reset" type="function">
+  Resets zoom and translation of graph
+</ResponseField>
+
+<ResponseField name="let:unhideAll" type="function">
+  Unhides all nodes. When using default Controls component, this button is only
+  visible when Nodes are hidden
+</ResponseField>

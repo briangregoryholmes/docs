@@ -9,7 +9,7 @@
   "colors": {
     "primary": "#E94646",
     "light": "#E94646",
-    "dark": "#E94646"
+    "dark": "#9F1239"
   },
   "topbarLinks": [
     {
@@ -18,20 +18,29 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Get Started",
-    "url": "https://github.com/mintlify/starter"
+    "type": "github",
+    "url": "https://github.com/open-source-labs/Svelvet/"
   },
   "anchors": [
     {
-      "name": "Changelog",
-      "icon": "list",
-      "url": "https://mintlify.com"
+      "name": "Examples",
+      "icon": "arrow-pointer",
+      "url": "https://codesandbox.com"
+    },
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/open-source-labs/Svelvet/"
     }
   ],
   "navigation": [
     {
       "group": "Overview",
-      "pages": ["introduction", "Getting Started"]
+      "pages": ["introduction", "changelog", "roadmap"]
+    },
+    {
+      "group": "Getting Started",
+      "pages": ["getting-started/installation", "getting-started/concepts"]
     },
     {
       "group": "Components",

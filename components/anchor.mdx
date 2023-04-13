@@ -8,16 +8,17 @@ description: 'Point of connection from an Edge to a Node'
 
 ## Description
 
-The Anchor component has a few purposes.
-First, it is used to track the point on the DOM associated with the anchor. We only update the position when the Node is resized as it is otherwise dependent on the parent.
-This allows us to have hudnreds of anchors per node if necessary! Anchor is passed as a child of a Node component, and can be placed anywhere using CSS.
-You can create your own custom Anchors by passing HTML elements or components as children. We also expose a few properties representing the state of the anchor that you can use to control the classes of your custom Anchor.
+Anchor is passed as a child of a Node component, and can be placed anywhere using your preferred styling language.
+
+You can customize the visual representation of the Anchor by passing HTML elements or Svelte components as children of the Anchor component.
+
+We also expose a few properties representing the state of the Anchor that you can use to control the classes of your custom Anchor.
 
 If you are using our data flow system, you can also pass the input and output stores associated with the Anchor and we will connect them for you.
 
 Anchors can be created as inputs, outputs or neither, which controls the connection logic. (Inputs cannot be connectd to inputs.)
 
-```html MyNode.svelte
+```jsx MyNode.svelte
 <script>
   import { Node, Anchor } from 'svelvet';
 </script>
@@ -46,18 +47,22 @@ Anchors can be created as inputs, outputs or neither, which controls the connect
   integer starting at 1 for each Node. Used as the HTML id value for the element
   taking the form A-id/N-id
 </ResponseField>
+
 <ResponseField name="input" type="boolean" default="false">
   Boolean that specifies the anchor can only connect to output or no-preference
   anchors. When not passed, anchor allows all connections.
 </ResponseField>
+
 <ResponseField name="output" type="boolean" default="false">
   Boolean that specifies the anchor can only connect to inputs or no-preference
   anchors. When not passed, anchor allows all connections.
 </ResponseField>
+
 <ResponseField name="multiple" type="boolean" default="input/output dependent">
   Boolean used to control whether input anchors can have multiple connections.
   This is false for input anchors and true for output and no-preference anchors.
 </ResponseField>
+
 <ResponseField
   name="direction"
   type="north | south | east | west"
@@ -67,14 +72,17 @@ Anchors can be created as inputs, outputs or neither, which controls the connect
   anchor on the left side of the node has a directionality of "west". This is
   used to control the curvature of the edge.
 </ResponseField>
+
 <ResponseField name="edge" type="Svelte Component | null" default="null">
-  An Edge component meant to be associate with the Anchor. Every connection made
-  from this anchor, will render out the corresponding Edge.
+  An Edge component meant to be associated with the Anchor. Every connection
+  made from this Anchor, will render out the corresponding Edge.
 </ResponseField>
+
 <ResponseField name="connections" type="Array<[nodeId, anchorId]>" default="[]">
   Array of anchors to connect to. Edges can be created dynamically, but this
   used to specify Edges ahead of time.
 </ResponseField>
+
 <ResponseField
   name="inputsStore"
   type="ReturnType<typeof generateInputs> | null"
@@ -83,9 +91,11 @@ Anchors can be created as inputs, outputs or neither, which controls the connect
   When using our data flow system, this is the store of possible inputs for the
   Node and is the return value of the function generateInputs.
 </ResponseField>
+
 <ResponseField name="key" type="string | null" default="null">
   Key associated with the input
 </ResponseField>
+
 <ResponseField
   name="outputStore"
   type="Readable<unknown> | null"
@@ -93,4 +103,18 @@ Anchors can be created as inputs, outputs or neither, which controls the connect
 >
   When using our data flow system, this is the store associated with a data
   output of a node. It is return value of the function generateOutput.
+</ResponseField>
+
+## Properties
+
+<ResponseField name="let:linked" type="boolean">
+  True when the Anchor has an active connection.
+</ResponseField>
+
+<ResponseField name="let:connecting" type="boolean">
+  True when the Anchor is rendering a temporary Edge connected to the cursor.
+</ResponseField>
+
+<ResponseField name="let:hovering" type="boolean">
+  True when the cursor is over the Anchor element
 </ResponseField>
