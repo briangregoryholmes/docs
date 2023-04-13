@@ -1,0 +1,147 @@
+---
+title: 'Node'
+sidebarTitle: 'Node'
+description: 'A Svelte component to wrap custom components or configure via props'
+---
+
+## Getting started
+
+A Node can be configured in two primary ways.
+
+First you can customize the default node by passing props to control color, border, size, position, etc.
+
+Second, you can wrap your own custom components with our Node component and use the exposed actions, properties and events however you choose. Pass the entire component as a child of the Svelvet component to render it on the graph.
+
+<RequestExample>
+```html MyNode.svelte
+<script>
+  import { Node } from 'svelvet';
+
+function handleClick(e: CustomEvent) {
+const { detail } = e;
+detail.node.set.bgColor('red');
+}
+
+</script>
+
+<Node id="55" let:grabHandle let:selected on:nodeClicked="{handleClick}">
+  <div use:grabHandle class:selected class="my-component">
+    <span>Click Me</span>
+  </div>
+</Node>
+```
+</RequestExample>
+```html MyNode.svelte
+<script>
+  import { Node, Svelvet } from 'svelvet';
+  import { MyNode } from './MyNode.svelte';
+</script>
+
+<Svelvet>
+  <MyNode />
+  <Node id="alpha" bgColor="red" label="Default Node" />
+</Svelvet>
+```
+
+## Props
+
+<ResponseField
+  name="position"
+  type="{x: number, y: number}"
+  default="{x: 0, y: 0}"
+>
+  Initial position of the node. Coordinate is relative to the top/left point of
+  the graph.
+</ResponseField>
+<ResponseField
+  name="dimensions"
+  type="{ width: number, height: number }"
+  default="{ width: 200, height: 100 }"
+>
+  Initial dimensions of the node. Pixel value based on initial scale.
+</ResponseField>
+<ResponseField name="id" type="number | string" default="incrementing integer">
+  Identification for the node. If not passed, defaults to an incrementing
+  integer. Used as the HTML id value for the element taking the form N-id
+</ResponseField>
+<ResponseField name="inputs" type="number" default="1">
+  Number of input anchors placed on the node
+</ResponseField>
+<ResponseField name="outputs" type="number" default="1">
+  Number of output anchors placed on the node
+</ResponseField>
+<ResponseField name="bgColor" type="CSS Color String" default="theme dependent">
+  The initial background color of the node. Default changes based on theme.
+</ResponseField>
+<ResponseField
+  name="borderColor"
+  type="CSS Color String"
+  default="theme dependent"
+>
+  The initial border color of the node. Default changes based on theme.
+</ResponseField>
+<ResponseField
+  name="textColor"
+  type="CSS Color String"
+  default="theme dependent"
+>
+  The initial text color of the node. Default changes based on theme.
+</ResponseField>
+<ResponseField
+  name="selectionColor"
+  type="CSS Color String"
+  default="theme dependent"
+>
+  Color of the border when the node is selected
+</ResponseField>
+<ResponseField name="label" type="string" default="">
+  Label for the default node. Centered horizontally and vertically
+</ResponseField>
+<ResponseField name="TD" type="boolean" default="false">
+  Controls the default direction of the graph. When true, input anchors on top
+  and output anchors on the bottom. If neither TD or LR are passed, node
+  direction defaults to graph direction.
+</ResponseField>
+<ResponseField name="LR" type="boolean" default="false">
+  Controls the default direction of the graph. When true, input anchors are
+  placed on left and output anchors on the right. If neither TD or LR are
+  passed, node direction defaults to graph direction.
+</ResponseField>
+<ResponseField name="zIndex" type="number | Infinity | -Infinity" default="1">
+  Initial stacking placement of the node. To force a node to the top or bottom
+  at all times, pass Infinity or -Infinity
+</ResponseField>
+<ResponseField name="editable" type="boolean" default="false">
+  Determines whether the node properties can be edited via right click.
+</ResponseField>
+<ResponseField name="locked" type="boolean" default="false">
+  Prevents node from being moved. Can be set at the graph level.
+</ResponseField>
+
+## Actions
+
+<ResponseField name="let:grabHandle">
+  Accessed via the let directive. Place on the element (use:grabHandle) you
+  would like to control dragging and selection of the node.
+</ResponseField>
+
+## Events
+
+<ResponseField name="on:nodeClicked">
+  Fires when the node is clicked.
+</ResponseField>
+
+<ResponseField name="on:connection">
+  Fires whenever an anchor on the node is connected.
+</ResponseField>
+
+<ResponseField name="on:disconnection">
+  Fires whenever an anchor on the node is disconnected.
+</ResponseField>
+
+## Properties
+
+<ResponseField name="let:selected" type="boolean">
+  Boolean representing whether or not the node is currently selected. Toggle
+  classes by passing to an element using the class directive (class:selected)
+</ResponseField>

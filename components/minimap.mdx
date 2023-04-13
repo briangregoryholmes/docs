@@ -1,0 +1,58 @@
+---
+title: 'Minimap'
+sidebarTitle: 'Minimap'
+description: 'Plugin component that displays a map of all nodes on the graph'
+---
+
+## Getting started
+
+The Minimap component can be controlled via two methods.
+
+First, you can pass the prop "minimap" to the Svelvet component to render the minimap using all defaults.
+
+Second, you can pass the Minimap component as a child of the Svelvet component and configure additional parameters via props.
+
+<Warning>
+  Make sure to set slot="minimap" when passing the component as a child
+</Warning>
+
+```html App.svelte
+<script>
+  import { Svelvet } from 'svelvet';
+</script>
+
+<Svelvet>
+  <Minimap width="{100}" corner="NE" mapColor="blue" slot="minimap" />
+</Svelvet>
+```
+
+## Props
+
+<ResponseField name="corner" type="enum" options="NW | SW" default="SE">
+  Controls corner placement of the Minimap component
+</ResponseField>
+
+<ResponseField name="width" type="number" default="100">
+  Width dimension of the Minimap component
+</ResponseField>
+<ResponseField name="height" type="number" default="0">
+  Height dimension of the Minimap component. If not passed, Minimap will render
+  out as a square with both dimensions equal to the width value.
+</ResponseField>
+<ResponseField
+  name="mapColor"
+  type="CSS Color String"
+  default="theme dependent"
+>
+  Background color of minimap
+</ResponseField>
+<ResponseField name="nodeColor" type="CSS Color String" default="Node Color">
+  Color of the minimap node elements. Defaults to actual node color.
+</ResponseField>
+<ResponseField
+  name="borderColor"
+  type="CSS Color String"
+  default="theme dependent"
+>
+  Border color of the Minimap wrapper
+</ResponseField>

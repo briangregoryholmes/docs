@@ -31,11 +31,6 @@
       "name": "Changelog",
       "icon": "list",
       "url": "https://mintlify.com"
-    },
-    {
-      "name": "Community",
-      "icon": "discord",
-      "url": "https://mintlify.com/community"
     }
   ],
   "navigation": [
@@ -44,17 +39,8 @@
       "pages": ["introduction", "features"]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/authentication"]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
-      ]
+      "group": "Components",
+      "pages": ["components/node", "components/minimap"]
     }
   ],
   "footerSocials": {
