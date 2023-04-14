@@ -40,7 +40,7 @@
     },
     {
       "group": "Getting Started",
-      "pages": ["getting-started/installation", "getting-started/concepts"]
+      "pages": ["getting-started/installation"]
     },
     {
       "group": "Components",
