@@ -18,9 +18,11 @@ If you are using our data flow system, you can also pass the input and output st
 
 Anchors can be created as inputs, outputs or neither, which controls the connection logic. (Inputs cannot be connectd to inputs.)
 
-```jsx MyNode.svelte
+```HTML MyNode.svelte
 <script>
   import { Node, Anchor } from 'svelvet';
+
+  const connections = [["node1", "4"],["node2", "3"]]
 </script>
 
 <Node let:grabHandle let:selected>
@@ -28,7 +30,7 @@ Anchors can be created as inputs, outputs or neither, which controls the connect
     <div class="input-anchors">
       <Anchor input />
       <Anchor id="data-connection" input />
-      <Anchor multiple input connections={[["node1", "4"],["node2", "3"]]}/>
+      <Anchor {connections} multiple input />
     </div>
     <div class="output-anchors">
       <Anchor let:linked let:hovering let:connecting output edge="{CustomEdge}">

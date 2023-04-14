@@ -13,7 +13,7 @@ First you can customize the default node by passing props to control color, bord
 Second, you can wrap your own custom components with our Node component and use the exposed actions, properties and events however you choose. Pass the entire component as a child of the Svelvet component to render it on the graph.
 
 <RequestExample>
-```html MyNode.svelte
+```HTML MyNode.svelte
 <script>
   import { Node } from 'svelvet';
 
@@ -31,7 +31,7 @@ detail.node.set.bgColor('red');
 </Node>
 ```
 </RequestExample>
-```html MyNode.svelte
+```HTML MyNode.svelte
 <script>
   import { Node, Svelvet } from 'svelvet';
   import { MyNode } from './MyNode.svelte';
@@ -63,6 +63,10 @@ detail.node.set.bgColor('red');
 <ResponseField name="id" type="number | string" default="incrementing integer">
   Identification for the node. If not passed, defaults to an incrementing
   integer. Used as the HTML id value for the element taking the form N-id
+</ResponseField>
+<ResponseField name="edge" type="Edge Component">
+  A custom Edge component to be used as the default Edge style for the Node. Can
+  be overriden at the Anchor level
 </ResponseField>
 <ResponseField name="inputs" type="number" default="1">
   Number of input anchors placed on the node
@@ -144,4 +148,8 @@ detail.node.set.bgColor('red');
 <ResponseField name="let:selected" type="boolean">
   Boolean representing whether or not the node is currently selected. Toggle
   classes by passing to an element using the class directive (class:selected)
+</ResponseField>
+
+<ResponseField name="let:node" type="object">
+  The node object from the Svelvet internal store
 </ResponseField>

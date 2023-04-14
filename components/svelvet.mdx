@@ -8,7 +8,7 @@ description: 'Graph component. Configurable via props'
 
 Svelvet is the wrapping parent component that renders out nodes and edges. It is configurable via props, but no props are required. Many props can be set globally at this level and the overriden at the Node, Edge or Anchor level.
 
-```html App.svelte
+```HTML App.svelte
 <script>
   import { Node, Svelvet, Minimap, Controls } from 'svelvet';
 </script>
@@ -41,6 +41,10 @@ Svelvet is the wrapping parent component that renders out nodes and edges. It is
 <ResponseField name="controls" type="boolean" default="false">
   Boolean used to render the default Controls component. Just pass "controls"
   rather than controls={true}
+</ResponseField>
+<ResponseField name="edge" type="Edge Component">
+  A custom Edge component to be used as the global Edge style for the graph. Can
+  be overriden at the Node and Anchor level
 </ResponseField>
 <ResponseField
   name="edgeStyle"
