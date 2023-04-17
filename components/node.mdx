@@ -1,7 +1,7 @@
 ---
 title: 'Node'
 sidebarTitle: 'Node'
-description: 'Primary graph element. Configurable via props or by passing a custom node as children'
+description: 'Primary canvas element. Configurable via props or by passing a custom node as children'
 ---
 
 ## Description
@@ -10,7 +10,7 @@ A Node can be configured in two primary ways.
 
 First you can customize the default node by passing props to control color, border, size, position, etc.
 
-Second, you can wrap your own custom components with our Node component and use the exposed actions, properties and events however you choose. Pass the entire component as a child of the Svelvet component to render it on the graph.
+Second, you can wrap your own custom components with our Node component and use the exposed actions, properties and events however you choose. Pass the entire component as a child of the Svelvet component to render it on the canvas.
 
 <RequestExample>
 ```HTML MyNode.svelte
@@ -42,6 +42,12 @@ detail.node.set.bgColor('red');
   <Node id="alpha" bgColor="red" label="Default Node" />
 </Svelvet>
 ```
+<Tip>
+  When creating custom nodes, styling should be handled entirely within the
+  context of your component. Passing props to the Node wrapper may not result in
+  your intended styling. If you'd like the Node to be resizable, you can set
+  initial dimensions via props, but set your CSS width and height to 100%
+</Tip>
 
 ## Props
 
@@ -51,7 +57,7 @@ detail.node.set.bgColor('red');
   default="{x: 0, y: 0}"
 >
   Initial position of the node. Coordinate is relative to the top/left point of
-  the graph.
+  the canvas.
 </ResponseField>
 <ResponseField
   name="dimensions"
@@ -60,6 +66,17 @@ detail.node.set.bgColor('red');
 >
   Initial dimensions of the node. Pixel value based on initial scale.
 </ResponseField>
+<ResponseField
+  name="connections"
+  type="Array<[nodeId, anchorId] | nodeId>"
+  default="[]"
+>
+  Used to specify Node connections ahead of time. Array of tuples representing a
+  node/anchor pair or of nodeIds themselves. IDs can be strings or numbers. When
+  specifying nodeIds only, connections are spread evenly across the input
+  anchors of the target.
+</ResponseField>
+
 <ResponseField name="id" type="number | string" default="incrementing integer">
   Identification for the node. If not passed, defaults to an incrementing
   integer. Used as the HTML id value for the element taking the form N-id
@@ -84,6 +101,9 @@ detail.node.set.bgColor('red');
 >
   The initial border color of the node. Default changes based on theme.
 </ResponseField>
+<ResponseField name="borderWidth" type="number" default="1">
+  Pixel value of the border at default scale
+</ResponseField>
 <ResponseField
   name="textColor"
   type="CSS Color String"
@@ -102,14 +122,14 @@ detail.node.set.bgColor('red');
   Label for the default node. Centered horizontally and vertically
 </ResponseField>
 <ResponseField name="TD" type="boolean" default="false">
-  Controls the default direction of the graph. When true, input anchors on top
+  Controls the default direction of the canvas. When true, input anchors on top
   and output anchors on the bottom. If neither TD or LR are passed, node
-  direction defaults to graph direction.
+  direction defaults to canvas direction.
 </ResponseField>
 <ResponseField name="LR" type="boolean" default="false">
-  Controls the default direction of the graph. When true, input anchors are
+  Controls the default direction of the canvas. When true, input anchors are
   placed on left and output anchors on the right. If neither TD or LR are
-  passed, node direction defaults to graph direction.
+  passed, node direction defaults to canvas direction.
 </ResponseField>
 <ResponseField name="zIndex" type="number | Infinity | -Infinity" default="1">
   Initial stacking placement of the node. To force a node to the top or bottom
@@ -119,14 +139,14 @@ detail.node.set.bgColor('red');
   Determines whether the node properties can be edited via right click.
 </ResponseField>
 <ResponseField name="locked" type="boolean" default="false">
-  Prevents node from being moved. Can be set at the graph level.
+  Prevents node from being moved. Can be set at the canvas level.
 </ResponseField>
 
 ## Actions
 
 <ResponseField name="let:grabHandle">
-  Accessed via the let directive. Place on the element (use:grabHandle) you
-  would like to control dragging and selection of the node.
+  Accessed via the let directive. Placed on an element (use:grabHandle) you
+  would like to control movement and selection of the Node.
 </ResponseField>
 
 ## Events
@@ -151,5 +171,5 @@ detail.node.set.bgColor('red');
 </ResponseField>
 
 <ResponseField name="let:node" type="object">
-  The node object from the Svelvet internal store
+  The Node object from the Svelvet internal store
 </ResponseField>

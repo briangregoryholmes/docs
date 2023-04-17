@@ -52,12 +52,13 @@
         "components/group",
         "components/minimap",
         "components/controls",
-        "components/resizer"
+        "components/resizer",
+        "components/background"
       ]
     },
     {
-      "group": "Functions",
-      "pages": ["functions/Generate Inputs", "functions/Generate Output"]
+      "group": "Data Flow",
+      "pages": ["data-flow/overview"]
     }
   ],
   "footerSocials": {

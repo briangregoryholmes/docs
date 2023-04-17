@@ -8,35 +8,37 @@ description: 'Point of connection from an Edge to a Node'
 
 ## Description
 
-Anchors are passed as children to a Node component, and can be placed anywhere using your preferred styling language.
+Anchors are passed as children to a Node component and can be placed anywhere using CSS.
 
-You can customize the visual representation of the Anchor by passing HTML elements or Svelte components as children of the Anchor component.
+The visual representation of an Anchor can be customized by passing an HTML element or Svelte component as a child.
 
-We also expose a few properties representing the state of the Anchor that you can use to control the classes of your custom Anchor.
+Properties representing the state of the Anchor are exposed via the let directive. The booleans can control CSS styling of custom anchors using the class directive.
 
-If you are using our data flow system, you can also pass the input and output stores associated with the Anchor and we will connect them for you.
+When using Svelvet as a data flow system, Anchors also accept input and output stores as props. Connections made between Anchors will also connect the stores.
 
-Anchors can be created as inputs, outputs or neither, which controls the connection logic. (Inputs cannot be connectd to inputs.)
+Anchors can be created as inputs, outputs or default. This specification controls connection logic and directionality of the corresponding Edges.
+
+Finally, Edge connetions can be specified at runtime by passing an array of tuples via the connections prop. Each tuple represents a corresponding user-defined Node and Anchor ID.
 
 ```HTML MyNode.svelte
 <script>
   import { Node, Anchor } from 'svelvet';
+  import CustomAnchor from './CustomAnchor'
 
   const connections = [["node1", "4"],["node2", "3"]]
 </script>
 
-<Node let:grabHandle let:selected>
-  <div use:grabHandle class:selected>
+<Node let:selected>
+  <div class:selected>
     <div class="input-anchors">
-      <Anchor input />
-      <Anchor id="data-connection" input />
-      <Anchor {connections} multiple input />
+      <Anchor bgColor="red" id="data-connection" input />
+      <Anchor multiple input />
     </div>
     <div class="output-anchors">
       <Anchor let:linked let:hovering let:connecting output edge="{CustomEdge}">
         <CustomAnchor {linked} {hovering} {connecting} />
       </Anchor>
-      <Anchor direction="east" output />
+      <Anchor direction="east" {connections}  output />
     </div>
   </div>
 </Node>
@@ -48,6 +50,10 @@ Anchors can be created as inputs, outputs or neither, which controls the connect
   Identification for the Anchor. If not passed, defaults to an incrementing
   integer starting at 1 for each Node. Used as the HTML id value for the element
   taking the form A-id/N-id
+</ResponseField>
+
+<ResponseField name="bgColor" type="CSS Color String" default="theme dependent">
+  Used for styling the default anchor
 </ResponseField>
 
 <ResponseField name="input" type="boolean" default="false">
@@ -68,7 +74,7 @@ Anchors can be created as inputs, outputs or neither, which controls the connect
 <ResponseField
   name="direction"
   type="north | south | east | west"
-  default="graph direction dependent"
+  default="canvas direction dependent"
 >
   Enum used to control the "directionality" of the anchor. By default, an input
   anchor on the left side of the node has a directionality of "west". This is
@@ -76,13 +82,19 @@ Anchors can be created as inputs, outputs or neither, which controls the connect
 </ResponseField>
 
 <ResponseField name="edge" type="Svelte Component | null" default="null">
-  An Edge component meant to be associated with the Anchor. Every connection
-  made from this Anchor, will render out the corresponding Edge.
+  An Edge component associated with the Anchor. Every connection made from this
+  Anchor will render out the corresponding Edge.
 </ResponseField>
 
-<ResponseField name="connections" type="Array<[nodeId, anchorId]>" default="[]">
-  Array of anchors to connect to. Edges can be created dynamically, but this
-  used to specify Edges ahead of time.
+<ResponseField
+  name="connections"
+  type="Array<[nodeId, anchorId] | nodeId>"
+  default="[]"
+>
+  Used to specify Node connections ahead of time. Array of tuples representing a
+  node/anchor pair or of nodeIds themselves. IDs can be strings or numbers. When
+  specifying nodeIds only, connections are spread evenly across the input
+  anchors of the target.
 </ResponseField>
 
 <ResponseField

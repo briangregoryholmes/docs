@@ -6,11 +6,11 @@ description: 'Optional component for customizing Edges and Edge labels'
 
 ## Description
 
-Paths can be customized for your Edges by placing the exposed "path" property on an HTML Path Element. You can also pass a custom label.
+Path visualization can be customized for edges by placing the exposed "path" property on an HTML Path Element. Custom labels can also be passed via the "label" slot.
 
 Custom Edges are then passed to the "edge" prop of an Anchor component. Any Edge initiated from that Anchor will render out your custom path and label.
 
-Edges can also be passed to the Svelvet and Node components. This allows you to set a default custom Edge at the graph level and then override this component at the Anchor or Node level.
+Edges can also be passed to the Svelvet and Node components, enabling the ability to set a global Edge style which can be overriden at the Anchor or Node level.
 
 <Warning>
   When customizing the Edge path via your own path element, props controlling
@@ -76,7 +76,9 @@ Edges can also be passed to the Svelvet and Node components. This allows you to 
 <ResponseField name="step" type="CSS Color String" default="false">
   Boolean controlling curvate of edge path. Renders edge as as straight line
 </ResponseField>
-
+<ResponseField name="cornerRadius" type="number" default="8">
+  Radius of corners when rendering out a step path. Set to 0 for hard corners.
+</ResponseField>
 <ResponseField name="animate" type="boolean" default="false">
   Renders edge path as a dashed, moving line
 </ResponseField>

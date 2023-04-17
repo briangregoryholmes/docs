@@ -8,9 +8,9 @@ description: 'Priorities and future ideas for iteration'
 
 What we're working on and thinking about.
 
-### Persistent Graph state
+### Persistent Canvas state
 
-We will be exposing functions that can be used to capture and restore the state of the graph. We may also expose a boolean that can be set on the Svelvet component to automatically save graph state to local storage.
+We will be exposing functions that can be used to capture and restore the state of the canvas. We may also expose a boolean that can be set on the Svelvet component to automatically save canvas state to local storage.
 
 ### Customizable Background Component
 
@@ -18,7 +18,7 @@ Like the Minimap and Controls components, we plan on exposing the Background com
 
 ### Improving Window Resize Logic
 
-While the Svelvet component can now fill the size of its wrapping container, we want to improve the logic about node postioning and graph scale on window resize.
+While the Svelvet component can now fill the size of its wrapping container, we want to improve the logic about node postioning and canvas scale on window resize.
 
 ### Additional Data Input Components
 
@@ -26,16 +26,20 @@ We plan on creating additional input/parameter components that integrate with ou
 
 ### Drag and Drop Drawer for Custom Components
 
-Component that can take custom Nodes as props and add them to graph via the UI.
+Component that can take custom Nodes as props and add them to canvas via the UI.
 
-### Snap To Gride Guidelines
+### Snap To Gride Guide Lines
 
 Visual representation of Snap To Grid functionality a la Photoshop
 
 ### Additional Customization of Input Mechanism
 
-We'd like to add greater customization of how users interact with the graph, allowing fore defaults to be set on panning, zooming and selection functionality.
+We'd like to add greater customization of how users interact with the canvas, allowing fore defaults to be set on panning, zooming and selection functionality.
 
 ### Accesibility
 
-It's high a priority for that navigating the graph is accessible for keyboard users. We plan on implementing Node movement and dynamic Edge creation soon.
+It's high a priority for the Svelvet team that navigating the canvas is accessible for keyboard users. We plan on implementing Node movement and dynamic Edge creation soon.
+
+### Conditional Custom Edges
+
+Rendering out different custom edges based on the state of the associated Anchors.
