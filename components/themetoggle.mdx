@@ -8,6 +8,10 @@ description: 'Optional component offering ability to dynamically toggle between 
 
 The Theme Toggle component can be rendered by passing the "toggle" prop to the Svelvet component. By default, this will toggle between light and dark themes. For additional customization, import the component and pass the entire thing as a child of Svelvet
 
+<Note>
+  When passing the component to Svelvet, you must specify slot="toggle"
+</Note>
+
 ```HTML
 <script lang="ts">
 	import { Svelvet, Node, ThemeToggle } from 'svelvet';
@@ -15,18 +19,12 @@ The Theme Toggle component can be rendered by passing the "toggle" prop to the S
 </script>
 
 <body>
-	<div class="wrapper">
-		<Svelvet edgeStyle="step" TD width={800} {theme} height={500} {zoom} minimap controls>
-			<Node />
-			<ThemeToggle main="dark" alt="light" slot="toggle" />
-		</Svelvet>
-	</div>
+    <Svelvet widht={400} height={400}>
+        <Node />
+        <ThemeToggle main="dark" alt="light" slot="toggle" />
+    </Svelvet>
 </body>
 ```
-
-<Info>
-  When passing the component to Svelvet, you must specify slot="toggle"
-</Info>
 
 <ResponseField
   name="main"

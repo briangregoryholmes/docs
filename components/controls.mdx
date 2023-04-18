@@ -10,7 +10,7 @@ The Controls component can be rendered using defaults by passing the "controls" 
 
 Customize the Controls component by wrapping it around custom buttons. Zoom increment and position are configurable via props. Trigger the exposed functions via mouse, keyboard and touch events.
 
-```jsx MyControls.svelte
+```HTML MyControls.svelte
 <script>
 	import { Controls } from 'svelvet';
 </script>
@@ -30,11 +30,11 @@ Customize the Controls component by wrapping it around custom buttons. Zoom incr
 </style>
 ```
 
-<Info>
+<Note>
   When passing the component to Svelvet, you must specify slot="controls"
-</Info>
+</Note>
 
-```jsx MyControls.svelte
+```HTML MyControls.svelte
 <script>
 	import { Svelvet, Node} from 'svelvet';
 </script>

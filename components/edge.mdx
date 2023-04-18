@@ -6,11 +6,15 @@ description: 'Optional component for customizing Edges and Edge labels'
 
 ## Description
 
-Path visualization can be customized for edges by placing the exposed "path" property on an HTML Path Element. Custom labels can also be passed via the "label" slot.
+Visualization and interaction behavior can be customized for Edges by creating your own custom components.
+
+Edges styling can be fully controlled via CSS by passing the expose "path" variable on an HTML Path Element. Custom labels can also be passed via the "label" slot.
 
 Custom Edges are then passed to the "edge" prop of an Anchor component. Any Edge initiated from that Anchor will render out your custom path and label.
 
 Edges can also be passed to the Svelvet and Node components, enabling the ability to set a global Edge style which can be overriden at the Anchor or Node level.
+
+Edges also accept callback functions that run in response to click events on the path.
 
 <Warning>
   When customizing the Edge path via your own path element, props controlling
@@ -23,10 +27,10 @@ Edges can also be passed to the Svelvet and Node components, enabling the abilit
 	import { Edge } from 'svelvet';
 </script>
 
-<Edge let:path let:destroy step>
+<Edge let:path let:destroy edgeClick="{() => alert('Edge clicked')}" step>
   <path d={path} />
   <button on:click={destroy} slot="label">
-    <p>Custom Edge</p>
+    <p>Custom Label</p>
   </button>
 </Edge>
 
@@ -43,7 +47,7 @@ Edges can also be passed to the Svelvet and Node components, enabling the abilit
 ```HTML MyNode.svelte
 <script>
 	import { Svelvet, Node } from 'svelvet';
-    import { MyEdge } from './MyEdge.svelte
+    import MyEdge from './MyEdge.svelte
 </script>
 
 <Svelvet>
@@ -59,7 +63,7 @@ Edges can also be passed to the Svelvet and Node components, enabling the abilit
 
 ##
 
-<Info>When passing a custom label, you must specify slot="label"</Info>
+<Note>When passing a custom label, you must specify slot="label"</Note>
 
 ## Props
 
@@ -67,7 +71,7 @@ Edges can also be passed to the Svelvet and Node components, enabling the abilit
   Pixel width of stroke at scale 1
 </ResponseField>
 <ResponseField name="edgeClick" type="(() => void) | null" default="null">
-  Function to run when a click event is firedon an Edge
+  Function to run when a click event is fired on an Edge
 </ResponseField>
 <ResponseField name="targetColor" type="CSSColorString">
   Color of the Edge click target. Set to opacity 50%. Only displayed when an

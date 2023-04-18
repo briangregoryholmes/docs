@@ -50,9 +50,9 @@
         "components/anchor",
         "components/edge",
         "components/group",
+        "components/resizer",
         "components/minimap",
         "components/controls",
-        "components/resizer",
         "components/background",
         "components/themetoggle"
       ]
