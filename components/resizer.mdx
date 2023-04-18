@@ -8,7 +8,7 @@ description: ''
 
 ## Description
 
-The Resizer component can be passed to a custom node to enable dynamic resizing. Dimensions allowed for resizing and minimum dimensions can be set via props.
+The Resizer component can be passed to a custom Node to enable dynamic resizing and rotation. Dimensions allowed for resizing and minimum dimensions can be set via props.
 
 ```HTML MyNode.svelte
 <script>
@@ -17,7 +17,7 @@ The Resizer component can be passed to a custom node to enable dynamic resizing.
 
 <Node let:selected dimensions={{ width: 400, height: 100 }}>
 	<div class="node" class:selected>
-    	<Resizer width height />
+    	<Resizer width height rotation/>
     </div>
 
 </Node>
@@ -44,11 +44,14 @@ The Resizer component can be passed to a custom node to enable dynamic resizing.
 ## Props
 
 <ResponseField name="width" type="number" default="false">
-  Boolean controlling whether the node can be resized along its width
+  Boolean controlling whether the Node can be resized along its width
 </ResponseField>
 
 <ResponseField name="width" type="number" default="false">
-  Boolean controlling whether the node can be resized along its height
+  Boolean controlling whether the Node can be resized along its height
+</ResponseField>
+<ResponseField name="rotation" type="boolean" default="false">
+  Boolean controlling whether the Node can be rotated via the top left corner
 </ResponseField>
 
 <ResponseField name="minHeight" type="number" default="200">

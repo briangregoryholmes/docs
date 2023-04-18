@@ -85,6 +85,18 @@ Finally, Edge connetions can be specified at runtime by passing an array of tupl
   An Edge component associated with the Anchor. Every connection made from this
   Anchor will render out the corresponding Edge.
 </ResponseField>
+<ResponseField name="edgeLabel" type="string" default="">
+  When not passing a custom Edge component, this prop can be used to set the
+  label for all Edges initiated from the Anchor
+</ResponseField>
+<ResponseField
+  name="edgeColor"
+  type="CSS Color String"
+  default="theme dependent"
+>
+  When not passing a custom Edge component, this prop can be used to set the
+  color for all Edges initiated from the Anchor
+</ResponseField>
 
 <ResponseField
   name="connections"
@@ -95,6 +107,9 @@ Finally, Edge connetions can be specified at runtime by passing an array of tupl
   node/anchor pair or of nodeIds themselves. IDs can be strings or numbers. When
   specifying nodeIds only, connections are spread evenly across the input
   anchors of the target.
+</ResponseField>
+<ResponseField name="locked" type="boolean" default="false">
+  Prevents Anchor from being connected/disconnected
 </ResponseField>
 
 <ResponseField

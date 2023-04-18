@@ -66,6 +66,13 @@ Edges can also be passed to the Svelvet and Node components, enabling the abilit
 <ResponseField name="width" type="number" default="2">
   Pixel width of stroke at scale 1
 </ResponseField>
+<ResponseField name="edgeClick" type="(() => void) | null" default="null">
+  Function to run when a click event is firedon an Edge
+</ResponseField>
+<ResponseField name="targetColor" type="CSSColorString">
+  Color of the Edge click target. Set to opacity 50%. Only displayed when an
+  edgeClick function is passed.
+</ResponseField>
 <ResponseField name="color" type="CSS Color String" default="theme dependent">
   Color of the edge path
 </ResponseField>
