@@ -53,12 +53,18 @@
         "components/minimap",
         "components/controls",
         "components/resizer",
-        "components/background"
+        "components/background",
+        "components/themetoggle"
       ]
     },
     {
       "group": "Data Flow",
-      "pages": ["data-flow/overview"]
+      "pages": [
+        "data-flow/overview",
+        "data-flow/slider",
+        "data-flow/radiogroup",
+        "data-flow/colorpicker"
+      ]
     }
   ],
   "footerSocials": {
