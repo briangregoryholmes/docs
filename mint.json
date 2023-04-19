@@ -23,11 +23,6 @@
   },
   "anchors": [
     {
-      "name": "Examples",
-      "icon": "arrow-pointer",
-      "url": "https://codesandbox.com"
-    },
-    {
       "name": "GitHub",
       "icon": "github",
       "url": "https://github.com/open-source-labs/Svelvet/"

@@ -5,21 +5,21 @@ sidebarTitle: 'Overview'
 
 ## Concepts
 
-Connections between Anchors can be made functional by passing input and output stores via props.
+Connections between [Anchors](/components/anchor) can be made functional by passing input and output stores via props.
 
-An input store is a Svelte writable with string keys and writable numbers, strings, objects, arrays or booleans as the values.
+An `input store` is a Svelte writable with string keys and writable `numbers`, `strings`, `objects`, `arrays` or `booleans` as the values.
 
-In general terms, the return type of generateInputs is a Writable<Record<string, Writable<unknown>>>, though, this is a simplification for illustrative purposes.
+In general terms, the return type of `generateInputs` is a `Writable<Record<string, Writable<unknown>>>`, though, this is a simplification for illustrative purposes.
 
-An output store is a custom readable derived from the current values of each parameter in an input store. Every time a parameter changes, the output store is rederived according to a user provided processors function.
+An `output store` is a custom readable derived from the current values of each parameter in an input store. Every time a parameter changes, the output store is rederived according to a user provided processors function.
 
-A processor function is a user-defined callback that is called with the current values of the input store. An output store returns a single value.
+A `processor function` is a user-defined callback that is called with the current values of the input store. An output store returns a single value.
 
-To facilitate easier setup, we have created a series of functional components that can control Node parameters as well has some helper fucunctions to to format parameters for use in this model and generate outputs based on a provided processor function.
+To facilitate easier setup, we have created a series of functional components that can control Node parameters as well has some helper functions to format parameters for use in this model and generate outputs based on a provided processor function.
 
-Below is an example Node that has three parameters: two integer values controlled via Sliders and an "option" value, controlled via a RadioGroup, representing the mathematical operation to apply to the integer values.
+Below is an example [Node](/components/node) that has three parameters: two integer values controlled via [Sliders](/data-flow/slider) and an "option" value, controlled via a [RadioGroup](/data-flow/radiogroup), representing the mathematical operation to apply to the integer values.
 
-When conncetions are made to input Anchors, the writable associated with the corresponding key is overwritten with the readable store associate with the output anchor that connected to it. Upon disconnection, a new writable is created with the last value of the output prior to disconnection.
+When connections are made to input [Anchors](/components/anchor), the writable associated with the corresponding key is overwritten with the readable store associate with the output anchor that connected to it. Upon disconnection, a new writable is created with the last value of the output prior to disconnection.
 
 ```HTML
 <script lang="ts">
@@ -41,7 +41,7 @@ When conncetions are made to input Anchors, the writable associated with the cor
 	};
 
     // Generate a formatted inputs store
-	const inputs = generateInput(initialData);
+	const inputs = generateInputs(initialData);
 
     // Specify processor function
 	const processor = (inputs: InputStructure) => {
