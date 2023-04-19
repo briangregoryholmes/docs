@@ -18,7 +18,7 @@ When using Svelvet as a data flow system, Anchors also accept input and output s
 
 Anchors can be created as inputs, outputs or default. This specification controls connection logic and directionality of the corresponding Edges.
 
-Finally, Edge connetions can be specified at runtime by passing an array of tuples via the connections prop. Each tuple represents a corresponding user-defined Node and Anchor ID.
+Finally, Edge connections can be specified at runtime by passing an array of tuples via the connections prop. Each tuple represents a corresponding user-defined Node and Anchor ID.
 
 ```HTML MyNode.svelte
 <script>
@@ -121,10 +121,6 @@ Finally, Edge connetions can be specified at runtime by passing an array of tupl
   Node and is the return value of the function generateInputs.
 </ResponseField>
 
-<ResponseField name="key" type="string | null" default="null">
-  Key associated with the input
-</ResponseField>
-
 <ResponseField
   name="outputStore"
   type="Readable<unknown> | null"
@@ -133,6 +129,12 @@ Finally, Edge connetions can be specified at runtime by passing an array of tupl
   When using our data flow system, this is the store associated with a data
   output of a node. It is return value of the function generateOutput.
 </ResponseField>
+
+<ResponseField name="key" type="string | null" default="null">
+  Key associated with the input.
+</ResponseField>
+
+
 
 ## Properties
 
@@ -145,5 +147,5 @@ Finally, Edge connetions can be specified at runtime by passing an array of tupl
 </ResponseField>
 
 <ResponseField name="let:hovering" type="boolean">
-  True when the cursor is over the Anchor element
+  True when the cursor is over the Anchor element.
 </ResponseField>
