@@ -8,7 +8,7 @@ description: 'Primary canvas element. Configurable via props or by passing a cus
 
 A Node can be configured in two primary ways.
 
-First you can customize the default node by passing props to control color, border, size, position, etc.
+First, you can customize the default node by passing props to control color, border, size, position, etc.
 
 Second, you can wrap your own custom components with our Node component and use the exposed actions, properties and events however you choose. Pass the entire component as a child of the Svelvet component to render it on the canvas.
 
@@ -79,21 +79,21 @@ detail.node.set.bgColor('red');
 
 <ResponseField name="id" type="number | string" default="incrementing integer">
   Identification for the node. If not passed, defaults to an incrementing
-  integer. Used as the HTML id value for the element taking the form N-id
+  integer. Used as the HTML id value for the element taking the form N-id.
 </ResponseField>
 <ResponseField name="edge" type="Edge Component">
   A custom Edge component to be used as the default Edge style for the Node. Can
-  be overriden at the Anchor level
+  be overriden at the Anchor level.
 </ResponseField>
 <ResponseField name="inputs" type="number" default="1">
-  Number of input anchors placed on the node
+  Number of input anchors placed on the node.
 </ResponseField>
 <ResponseField name="outputs" type="number" default="1">
-  Number of output anchors placed on the node
+  Number of output anchors placed on the node.
 </ResponseField>
 <ResponseField name="useDefaults" type="boolean" default="false">
   When creating custom Nodes, pass the useDefaults prop to use Svelvet's default
-  Node styling
+  Node styling.
 </ResponseField>
 <ResponseField name="bgColor" type="CSS Color String" default="theme dependent">
   The initial background color of the node. Default changes based on theme.
@@ -106,10 +106,10 @@ detail.node.set.bgColor('red');
   The initial border color of the node. Default changes based on theme.
 </ResponseField>
 <ResponseField name="rotation" type="number" default="0">
-  Initial roation of node. Can be set dynamically when the Node is resizable
+  Initial roation of node. Can be set dynamically when the Node is resizable.
 </ResponseField>
 <ResponseField name="borderWidth" type="number" default="1">
-  Pixel value of the border at default scale
+  Pixel value of the border at default scale.
 </ResponseField>
 <ResponseField
   name="textColor"
@@ -123,7 +123,7 @@ detail.node.set.bgColor('red');
   type="CSS Color String"
   default="theme dependent"
 >
-  Color of the border when the node is selected
+  Color of the border when the node is selected.
 </ResponseField>
 <ResponseField name="label" type="string" default="">
   Label for the default node. Centered horizontally and vertically
@@ -140,7 +140,7 @@ detail.node.set.bgColor('red');
 </ResponseField>
 <ResponseField name="zIndex" type="number | Infinity | -Infinity" default="1">
   Initial stacking placement of the node. To force a node to the top or bottom
-  at all times, pass Infinity or -Infinity
+  at all times, pass Infinity or -Infinity.
 </ResponseField>
 <ResponseField name="editable" type="boolean" default="false">
   Determines whether the node properties can be edited via right click.
@@ -174,9 +174,9 @@ detail.node.set.bgColor('red');
 
 <ResponseField name="let:selected" type="boolean">
   Boolean representing whether or not the node is currently selected. Toggle
-  classes by passing to an element using the class directive (class:selected)
+  classes by passing to an element using the class directive (class:selected).
 </ResponseField>
 
 <ResponseField name="let:node" type="object">
-  The Node object from the Svelvet internal store
+  The Node object from the Svelvet internal store.
 </ResponseField>

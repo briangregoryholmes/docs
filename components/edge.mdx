@@ -68,58 +68,58 @@ Edges also accept callback functions that run in response to click events on the
 ## Props
 
 <ResponseField name="width" type="number" default="2">
-  Pixel width of stroke at scale 1
+  Pixel width of stroke at scale 1.
 </ResponseField>
 <ResponseField name="edgeClick" type="(() => void) | null" default="null">
-  Function to run when a click event is fired on an Edge
+  Function to run when a click event is fired on an Edge.
 </ResponseField>
 <ResponseField name="targetColor" type="CSSColorString">
   Color of the Edge click target. Set to opacity 50%. Only displayed when an
   edgeClick function is passed.
 </ResponseField>
 <ResponseField name="color" type="CSS Color String" default="theme dependent">
-  Color of the edge path
+  Color of the edge path.
 </ResponseField>
 <ResponseField name="straight" type="boolean" default="false">
-  Boolean controlling curvate of edge path. Renders edge using "step" logic
+  Boolean controlling curvate of edge path. Renders edge using "step" logic.
 </ResponseField>
 
 <ResponseField name="step" type="CSS Color String" default="false">
-  Boolean controlling curvate of edge path. Renders edge as as straight line
+  Boolean controlling curvate of edge path. Renders edge as straight line.
 </ResponseField>
 <ResponseField name="cornerRadius" type="number" default="8">
   Radius of corners when rendering out a step path. Set to 0 for hard corners.
 </ResponseField>
 <ResponseField name="animate" type="boolean" default="false">
-  Renders edge path as a dashed, moving line
+  Renders edge path as a dashed, moving line.
 </ResponseField>
 <ResponseField name="label" type="string">
-  Label text
+  Label text.
 </ResponseField>
 <ResponseField
   name="labelColor"
   type="CSS Color String"
   default="theme dependent"
 >
-  Color of the label
+  Color of the label.
 </ResponseField>
 <ResponseField
   name="textColor"
   type="CSS Color String"
   default="theme dependent"
 >
-  Color of the label text
+  Color of the label text.
 </ResponseField>
 
 ## Properties
 
 <ResponseField name="let:path" type="string">
   The SVG path string used for rendering the edge. Pass to the "d" parameter on
-  your custom path component
+  your custom path component.
 </ResponseField>
 
 ## Functions
 
 <ResponseField name="let:destroy" type="function">
-  Function to remove the edge and break Anchor connections
+  Function to remove the edge and break Anchor connections.
 </ResponseField>
