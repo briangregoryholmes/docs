@@ -17,9 +17,9 @@ description: 'Work in progress enumeration of changes to Svelvet 7 from previous
 ```html
 <script>
     import { Node, Svelvet} from 'svelvet'
-    import type { NodeConfig } from 'svelvet'
+    import type { NodeProps } from 'svelvet'
 
-    const nodes: Array<NodeConfig> = [
+    const nodes: Array<NodeProps> = [
         {
             bgColor: "red",
             dimensions: {
@@ -37,7 +37,7 @@ description: 'Work in progress enumeration of changes to Svelvet 7 from previous
 </Svelvet>
 ```
 
-- The equivalent to UserNodeType is NodeConfig. There is also a type "Node" for the structure of the actual Node in the store. We will be adding extensive type definitions to our documentation soon, but mostly everything developers need is included in the prop definitons for each component.
+- The equivalent to UserNodeType is NodeProps. There is also a type "Node" for the structure of the actual Node in the store. We will be adding extensive type definitions to our documentation soon, but mostly everything developers need is included in the prop definitons for each component.
 
 - Node width and height are now passed as part of a dimensions object `{width: number, height: number}`. Default is 200x100
 
@@ -45,14 +45,14 @@ description: 'Work in progress enumeration of changes to Svelvet 7 from previous
 
 - Setting initial location is now done via the `translation` prop, which takes the structure `{ x: number, y: number}`
 
-- Target position and source position are no longer part of a NodeConfig/UserNodeType. You can specify Node direction by passing `TD` or `LR`, which would place input anchors on the top/bottom or left/right respectively. You can specify an arbitrary number of Anchors with the `inputs`/`outputs` props. For the greatest level of customization, we suggest creating custom Nodes.
+- Target position and source position are no longer part of a NodeProps/UserNodeType. You can specify Node direction by passing `TD` or `LR`, which would place input anchors on the top/bottom or left/right respectively. You can specify an arbitrary number of Anchors with the `inputs`/`outputs` props. For the greatest level of customization, we suggest creating custom Nodes.
 
-- Click callbacks are no longer part of the NodeConfig/UserNodeType or a prop on the Node component. Instead, there is an event on the Node component you can listen for called on:nodeClicked. We pass the entire Node object as part of the event, but it's also accessible via let:node. There's also on:connection and on:disconnection for firing events when the state of an [Anchor](/components/anchor) changes.
+- Click callbacks are no longer part of the NodeProps/UserNodeType or a prop on the Node component. Instead, there is an event on the Node component you can listen for called on:nodeClicked. We pass the entire Node object as part of the event, but it's also accessible via let:node. There's also on:connection and on:disconnection for firing events when the state of an [Anchor](/components/anchor) changes.
 
 ```html
 <script>
   import { Node, Svelvet } from 'svelvet';
-  import type { NodeConfig } from 'svelvet';
+  import type { NodeProps } from 'svelvet';
   import CustomNode from './CustomNode.svelte';
 
   function myFunction(e: CustomEvent) {
