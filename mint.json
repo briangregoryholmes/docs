@@ -31,7 +31,7 @@
   "navigation": [
     {
       "group": "Overview",
-      "pages": ["introduction", "changelog", "roadmap"]
+      "pages": ["introduction", "changelog", "roadmap", "upgrading"]
     },
     {
       "group": "Getting Started",
