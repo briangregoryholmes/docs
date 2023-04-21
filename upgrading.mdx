@@ -43,7 +43,7 @@ description: 'Work in progress enumeration of changes to Svelvet 7 from previous
 
 - The prop controlling initial zoom is now called `zoom` as it features two way data binding and can be updated dynamically.
 
-- The prop `initialLocation` is not currently part of Svelvet. There is a new prop called `fitView` that achieves similar functionality and more. We'll be re-adding the `initialLocation` prop very soon. You can pass `fitView="resize"` to have Svelvet automatically recalculate fitView on viewport resize events.
+- Setting initial location is now done via the `translation` prop, which takes the structure `{ x: number, y: number}`
 
 - Target position and source position are no longer part of a NodeConfig/UserNodeType. You can specify Node direction by passing `TD` or `LR`, which would place input anchors on the top/bottom or left/right respectively. You can specify an arbitrary number of Anchors with the `inputs`/`outputs` props. For the greatest level of customization, we suggest creating custom Nodes.
 
