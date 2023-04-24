@@ -91,11 +91,12 @@ Finally, Edge connections can be specified at runtime by passing an array of tup
 </ResponseField>
 <ResponseField
   name="edgeColor"
-  type="CSS Color String"
+  type="Writable<CSS Color String>"
   default="theme dependent"
 >
-  When not passing a custom Edge component, this prop can be used to set the
-  color for all Edges initiated from the Anchor
+  This prop accepts a store value associated with a CSS Color String. It applies
+  to both default and custom Edges so long as the latter do not render out a
+  custom path or pass a `color` prop.
 </ResponseField>
 
 <ResponseField
@@ -133,8 +134,6 @@ Finally, Edge connections can be specified at runtime by passing an array of tup
 <ResponseField name="key" type="string | null" default="null">
   Key associated with the input.
 </ResponseField>
-
-
 
 ## Properties
 
