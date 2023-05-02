@@ -6,12 +6,21 @@ description: 'Recommended patterns for styling Graphs, Nodes, Edges and Anchors'
 
 ## Overview
 
-This section is a work in progress, but listed below are the available CSS variables for styling elements. These variables can be passed as styling props to individual components
-or used to create global themes using the following selector `:root[svelvet-theme="theme-name"]`. You can then pass the custom theme to the [Svelvet](components/svelvet) component via the reactive `theme` prop and to the [Theme Toggle](components/theme-toggle) component via the `main` and `alt` props. Types are not provided as these are traditional CSS parameters.
+This section is a work in progress, but listed below are the available CSS variables for styling elements. Types are not provided as these are traditional CSS parameters.
 
-When passing to individual components, these styles are scoped to the component itself. This is not currently true of Edges and our recommendation is to create custom Edge components.
+These variables can be passed as styling props to individual components or used to create global themes using a selector with the following structure: `:root[svelvet-theme="theme-name"]`.
+
+These theme names cna be passed to the [Svelvet](components/svelvet) component via the reactive `theme` prop and to the [Theme Toggle](components/theme-toggle) component via the `main` and `alt` props.
+
+When passing to individual components, these styles are scoped to the component itself. This is not currently true of Edges and our recommendation is to create custom [Edge](components/edge) components.
 
 Scroll to the bottom for example code.
+
+<Tip>
+  You can style parameters beyond those available here by using global
+  selectors. :global(.svelvet-node) selects applies to all Nodes, for instance.
+  Will add all internal class names with time!
+</Tip>
 
 ### Graph
 
