@@ -4,6 +4,32 @@ sidebarTitle: 'Changelog'
 description: 'New features, bug fixes, and improvements organized by release'
 ---
 
+## May 2, 2023
+
+**Svelvet `7.0.37`**
+
+- feat: graphs and other components can now be styled using CSS variables and :root[svelvet-theme="theme-name"] selectors
+- fix: hook custom themes into slider implementation and add unused border c… by @madvib in
+- refactor: reorganized internal node as an example file structure for other components
+- feat: nodeConnect prop on Anchor component initiates connection when an edge is dropped on a parent node
+- chore: update package version and gitignore file
+
+## April 26, 2023
+
+**Svelvet `7.0.34`**
+
+- feat: added modifier prop to Svelvet component to set key modifier globally #297
+- feat: added a new implementation of dynamic anchors
+- feat: added let:connect and let:disconnect methods to Node component
+- fix: graph element was not being focused when clicking node #298
+- fix: keydown listener was not activating when selecting something other than the Graph itself
+- fix: color wheel component was not tracking cursor properly when rotated
+- refactor: store structures now use maps instead of objects
+- refactor: EdgeStore now has custom methods
+- refactor: removed unnecessary helpers
+- refactor: moved DefaultAnchor to its own component
+- chore: update package version by
+
 ## April 21, 2023
 
 **Svelvet `7.0.15`**
