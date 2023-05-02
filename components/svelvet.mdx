@@ -78,12 +78,10 @@ Svelvet is the wrapping parent component that renders out nodes and edges. It is
   Sets the initial zoom level for the canvas. Below 1 zooms out, above 1 zooms
   in.
 </ResponseField>
-<ResponseField
-  name="theme"
-  type="light | dark | purple | parchment"
-  default="light"
->
-  Enum controlling default theme for the canvas.
+<ResponseField name="theme" type="string" default="light">
+  A string associated with a custom theme created using a
+  `:root[svelvet-theme="theme-name"]` CSS selector. Svelvet reserves `light` and
+  `dark`.
 </ResponseField>
 <ResponseField name="mermaid" type="string" default="">
   canvas representation using Mermaid-inspired string syntax. Great for quickly
@@ -104,9 +102,40 @@ Svelvet is the wrapping parent component that renders out nodes and edges. It is
   multiple components. This feature is enabled by default.
 </ResponseField>
 
+<ResponseField name="edgesAboveNode" type="boolean | 'all'" default="false">
+  Sets whether Edges should, by default, be placed above or below connected
+  Nodes. Can be set to `all` to force Edges above all nodes. Otherwise, true
+  essentially turns on `raiseEdgesOnSelect`, but places the edges at higher
+  z-Index than the Node.
+</ResponseField>
+
+<ResponseField
+  name="raiseEdgesOnSelect"
+  type="boolean | 'source' | 'target'"
+  default="false"
+>
+  When a Node is selected, this prop controls whether the z-index of a connected
+  edge should be raised. Setting to `true` raises the edge regardless of if the
+  source or target is selected.
+</ResponseField>
+
+<ResponseField
+  name="modifier"
+  type="'alt' | 'ctrl' | 'meta' | 'shift'"
+  default="meta"
+>
+  Sets global key modifier used to detect select all and duplicate events.
+</ResponseField>
+
+<ResponseField name="trackpadPan" type="boolean" default="false">
+  When using a trackpadPan, setting this prop to true enables two finger pan on
+  the Graph and pinch to zoom. Will conflict with scroll behavior on mice. This
+  mode of navigation can be enabled dynamically by hodling down the meta key.
+</ResponseField>
+
 ## Events
 
 <ResponseField name="on:edgeDrop">
-  Fires when an Edge connection is started and unsuccessfuly completed. Does not
-  fire on drops after a disconnection.
+  Fires when an Edge connection is started and not completed. Does not fire on
+  drops after a disconnection.
 </ResponseField>

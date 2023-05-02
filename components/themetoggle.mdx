@@ -26,19 +26,15 @@ The Theme Toggle component can be rendered by passing the `toggle` prop to the S
 </body>
 ```
 
-<ResponseField
-  name="main"
-  type="light | dark | purple | parchment | sunset"
-  default="dark"
->
-  Default theme to toggle between.
+<ResponseField name="main" type="string" default="light">
+  A string associated with a custom theme created using a
+  `:root[svelvet-theme="theme-name"]` CSS selector. Svelvet reserves `light` and
+  `dark`.
 </ResponseField>
-<ResponseField
-  name="alot"
-  type="light | dark | purple | parchment | sunset"
-  default="light"
->
-  Alt theme to toggle between.
+<ResponseField name="alt" type="string" default="dark">
+  A string associated with a custom theme created using a
+  `:root[svelvet-theme="theme-name"]` CSS selector. Svelvet reserves `light` and
+  `dark`.
 </ResponseField>
 <ResponseField name="corner" type="NE | SE | NW | SW" default="NE">
   Enum controlling corner positioning of button element.

@@ -32,7 +32,7 @@ Finally, Edge connections can be specified at runtime by passing an array of tup
   <div class:selected>
     <div class="input-anchors">
       <Anchor bgColor="red" id="data-connection" input />
-      <Anchor multiple input />
+      <Anchor multiple input nodeConnect/>
     </div>
     <div class="output-anchors">
       <Anchor let:linked let:hovering let:connecting output edge="{CustomEdge}">
@@ -52,8 +52,16 @@ Finally, Edge connections can be specified at runtime by passing an array of tup
   taking the form A-id/N-id
 </ResponseField>
 
-<ResponseField name="bgColor" type="CSS Color String" default="theme dependent">
-  Used for styling the default anchor
+<ResponseField name="invisible" type="boolean" default="false">
+  Prevents the default Anchor from rendering. When passing custom Anchors as
+  children, it is not necessary to set this prop to true. Usually used in
+  combination with the nodeConnect prop.
+</ResponseField>
+
+<ResponseField name="nodeConnect" type="boolean" default="false">
+  Boolean that determines whether mouse up events on the parent Node should
+  trigger connections to the Anchor. When this value is true for multiple
+  Anchors, connections will be made to open Anchors in order.
 </ResponseField>
 
 <ResponseField name="input" type="boolean" default="false">
@@ -79,6 +87,10 @@ Finally, Edge connections can be specified at runtime by passing an array of tup
   Enum used to control the "directionality" of the anchor. By default, an input
   anchor on the left side of the node has a directionality of "west". This is
   used to control the curvature of the edge.
+</ResponseField>
+<ResponseField name="dynamic" type="boolean" default="false">
+  Enables dynamic Anchor positioning based on relative posiiton of conneted
+  Nodes
 </ResponseField>
 
 <ResponseField name="edge" type="Svelte Component | null" default="null">
@@ -132,7 +144,11 @@ Finally, Edge connections can be specified at runtime by passing an array of tup
 </ResponseField>
 
 <ResponseField name="key" type="string | null" default="null">
-  Key associated with the input.
+  Key associated with the input store.
+</ResponseField>
+
+<ResponseField name="bgColor" type="CSS Color String" default="theme dependent">
+  Used for styling the default anchor
 </ResponseField>
 
 ## Properties

@@ -37,6 +37,11 @@
       "group": "Getting Started",
       "pages": ["getting-started/installation"]
     },
+
+    {
+      "group": "Styling",
+      "pages": ["styling"]
+    },
     {
       "group": "Components",
       "pages": [

@@ -156,6 +156,10 @@ detail.node.set.bgColor('red');
 <ResponseField name="center" type="boolean" default="false">
   When true, the Node is mounted in the optical center of the viewport
 </ResponseField>
+<ResponseField name="dynamic" type="boolean" default="false">
+  Enables dynamic Anchor positioning based on relative posiiton of conneted
+  Nodes
+</ResponseField>
 
 ## Actions
 
@@ -176,11 +180,16 @@ detail.node.set.bgColor('red');
 </ResponseField>
 
 <ResponseField name="on:connection">
-  Fires whenever an anchor on the node is connected.
+  Fires whenever an Anmchor on the Node is connected.
 </ResponseField>
 
 <ResponseField name="on:disconnection">
-  Fires whenever an anchor on the node is disconnected.
+  Fires whenever an Anchor on the Node is disconnected.
+</ResponseField>
+
+<ResponseField name="on:duplicate">
+  Fires whenever a Node is selected and the user triggers a modifier key command
+  with the 'D' key pressed.
 </ResponseField>
 
 ## Properties
@@ -192,4 +201,16 @@ detail.node.set.bgColor('red');
 
 <ResponseField name="let:node" type="object">
   The Node object from the Svelvet internal store.
+</ResponseField>
+
+## Functions
+
+<ResponseField name="let:connect">
+  Use to programatically create connections from Nodes. Accepts a single Node ID
+  or a [Node ID, Anchor ID] tuple.
+</ResponseField>
+
+<ResponseField name="let:disconnect">
+  Use to programatically remove connections from Nodes. Accepts a single Node ID
+  or a [Node ID, Anchor ID] tuple.
 </ResponseField>
