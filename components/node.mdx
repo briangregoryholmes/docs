@@ -96,6 +96,10 @@ detail.node.set.bgColor('red');
 <ResponseField name="outputs" type="number" default="1">
   Number of output anchors placed on the node.
 </ResponseField>
+<ResponseField name="drop" type="'cursor' | 'center'" default="false">
+  When passed a value, the initial drop position of the Node is set to the
+  current relative cursor position or the current viewport center.
+</ResponseField>
 <ResponseField name="useDefaults" type="boolean" default="false">
   When creating custom Nodes, pass the useDefaults prop to use Svelvet's default
   Node styling.
